@@ -1,0 +1,54 @@
+plugins {
+    id 'java-library'
+    id 'application'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30-RC'
+}
+
+group 'cloud.autotests'
+version '1.0'
+defaultTasks 'help'
+
+ext {
+    junitVersion = "5.6.2"
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+}
+
+dependencies {
+    testImplementation "io.rest-assured:rest-assured:4.1.2"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.0'
+    compile 'org.jdom:jdom2:2.0.6'
+    compile group: 'io.appium', name: 'java-client', version: '7.4.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '3.141.59'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task api(type: Test) {
+    useJUnitPlatform {
+        includeTags 'api'
+    }
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
