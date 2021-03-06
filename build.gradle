@@ -29,6 +29,10 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '3.141.59'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '3.141.59'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+
 
 
 }

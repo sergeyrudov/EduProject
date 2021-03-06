@@ -4,7 +4,7 @@ class Example2 {
 }
 
 fun main() {
-    val array = arrayOfNulls<Int?>(100)
+   /*val array = arrayOfNulls<Int?>(100)
     // filling array
     for (i in array.indices) {
         array[i] = i
@@ -16,5 +16,22 @@ fun main() {
     // read values from array
     for (i in array) {
         println(i)
+    }*/
+
+
+
+
+
+    val arrat = arrayListOf<String>()
+
+    for (i in arrat) {
+        if (i.isNotEmpty()) {
+            println(i)
+        }
+
     }
+
+
+
+
 }

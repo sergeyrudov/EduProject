@@ -3,9 +3,11 @@ package KotlinExperience
 fun main() {
     val user1 = User()
     println(user1.printUser())
+
+
 }
 
-class User {
+class User{
     val firstname:String = "Ivan"
     val surname:String = "Petrov"
 
@@ -13,4 +15,8 @@ class User {
     fun printUser() {
         println("$firstname $surname")
     }
+
+
+
 }
+

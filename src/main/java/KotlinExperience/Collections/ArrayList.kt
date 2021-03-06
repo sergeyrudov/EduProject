@@ -28,12 +28,6 @@ fun main() {
     array4[0] = 1
     //array4.removeAt(0)
     println(array4)
-
-
-
-
-
-
 }
 
 fun method(list: MutableList<Int>) {
