@@ -8,11 +8,11 @@ class ArraysExamples {
 fun main() {
     val itemsString: Array<String> = arrayOf("Hello", "World", "Korlin")
     val itemsInt: Array<Int> = arrayOf(1, 5, 77, 345, 72, 0, -3)
-    val someArray: Array<Int>
+    //val someArray: Array<Int>
     val listItems = listOf<Int>(3, 6, 9, 33, 0, 1)
-    val item:Any = 2
+    //val item:Any = 2
 
-    var user: Map<String, Int> = mapOf("ID" to 1, "age" to 22, "ID" to 2, "age" to 955)
+    //var user: Map<String, Int> = mapOf("ID" to 1, "age" to 22, "ID" to 2, "age" to 955)
     var anytypeDataMap: Map<String, Any> = mapOf("age" to 77, "surname" to "Sidorov", "haveDriveLicence" to false)
 
     println(itemsString[1])
