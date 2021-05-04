@@ -2,7 +2,7 @@ package AbstractFactory.MFM;
 
 import AbstractFactory.AppiumIOSDriver;
 
-public class iOSNative implements AppiumIOSDriver {
+public class iOSNative extends DriverFactory implements AppiumIOSDriver {
 
     @Override
     public void getIOSDriver() {
