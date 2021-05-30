@@ -83,14 +83,14 @@ public class Regex2 {
         Pattern pattern = Pattern.compile("[abcd][efgh3-8]");*/
 
 
-        String s1 = "abc a123 evrever";
-        Pattern pattern = Pattern.compile("[ab][evre0-9]");
+        String s1 = "T20 CLASSIC CHECKING S:0020 $0. *S:0020 T20 CLASSIC CHECKING";
+        Pattern pattern = Pattern.compile("\\$\\d+.");
 
 
         Matcher matcher = pattern.matcher(s1);
 
         while (matcher.find()) {
-            System.out.println("position: " + matcher.start() + " " + matcher.group());
+            System.out.println(matcher.group());
         }
     }
 }
