@@ -10,4 +10,18 @@ fun main() {
     for (name in namesStartsFromA) {
         println(name)
     }
+
+
+
+    val attribute:String? = ""
+
+    println(attribute.isNullOrEmpty())
+
+    test("sdsdd", "wewfwef")
+}
+
+fun test(vararg element:String) {
+    for(i in element) {
+        println(i)
+    }
 }
