@@ -1,53 +1,39 @@
 package KotlinExperience.OOP;
 
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class Address {
     private String city;
     private String street;
     private int numberOfHouse;
 
-    public Address(String city, String street, int numberOfHouse) {
-        this.city = city;
-        this.street = street;
-        this.numberOfHouse = numberOfHouse;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public int getNumberOfHouse() {
-        return numberOfHouse;
-    }
-
-    public void setNumberOfHouse(int numberOfHouse) {
-        this.numberOfHouse = numberOfHouse;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Address) {
+        if(this == o) {
+            return true;
+        }
+        if(hashCode() != o.hashCode()) {
+            return false;
+        }
+        if (o instanceof Address) {
             Address address = (Address) o;
-            if(this.city.equals(address.city) && this.street.equals(address.street) && this.numberOfHouse == address.numberOfHouse) {
+            if (this.city.equals(address.city) && this.street.equals(address.street) && this.numberOfHouse == address.numberOfHouse) {
                 return true;
             } else {
                 return false;
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return city.hashCode() + street.hashCode() + numberOfHouse;
     }
 }
 
@@ -60,5 +46,7 @@ class Demo {
         } else {
             System.out.println("not equals");
         }
+        System.out.println(address1.hashCode());
+        System.out.println(address2.hashCode());
     }
 }
