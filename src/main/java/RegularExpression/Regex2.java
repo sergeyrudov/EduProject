@@ -92,5 +92,10 @@ public class Regex2 {
         while (matcher.find()) {
             System.out.println(matcher.group());
         }
+
+
+        String[] names = {"name1", "name2"};
+
+        System.out.println(names[0]);
     }
 }

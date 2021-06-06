@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 public class TestCase {
 
+    static int age = 5;
+    int salary = 100;
+
     public static void main(String[] args) {
         List<Integer> arr = Arrays.asList(4, 1, 2, 4, 1, 3, 2, 1, 2, 3, 4, 4);
 
@@ -21,6 +24,14 @@ public class TestCase {
             System.out.println(i + "\t" + counter[i]);
         }
 
+    }
+
+    static int getAge() {
+        return age;
+    }
+
+    int getSalary() {
+        return salary;
     }
 
 

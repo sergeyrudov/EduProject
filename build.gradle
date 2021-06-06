@@ -61,6 +61,7 @@ dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '10.0.1'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    compile group: 'org.apache.commons', name: 'commons-configuration2', version: '2.7'
     //compile 'org.slf4j:slf4j-api:1.7.5'
     //compile 'org.slf4j:slf4j-simple:1.7.5'
 

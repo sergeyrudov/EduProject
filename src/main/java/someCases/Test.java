@@ -80,9 +80,12 @@ public class Test {
         System.out.println("filter empty values, to uppercase, remove duplicate: " + strings.stream()
                 .filter(Predicate.not(String::isBlank))
                 .filter(Objects::nonNull)
-                .map(i -> i.toUpperCase())
+                .map(String::toUpperCase)
                 .distinct()
                 .collect(Collectors.toList()));
+
+        System.out.println(strings.stream()
+        .filter(Predicate.not(String::isBlank)));
     }
 
 
