@@ -40,7 +40,6 @@ class MyArrayList<T> : MyList<T> {
         } else {
             throw IndexOutOfBoundsException()
         }
-
     }
 
     override fun size(): Int {

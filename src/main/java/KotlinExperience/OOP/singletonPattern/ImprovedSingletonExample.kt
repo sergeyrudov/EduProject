@@ -8,7 +8,6 @@ object ImprovedSingletonExample {
     fun insertData(str: String) {
         data.add(str)
     }
-
 }
 
 
@@ -17,10 +16,9 @@ fun main() {
     dataBase.insertData("Hello")
     dataBase.insertData("World")
     dataBase.insertData("I am Kotlin")
-    dataBase.insertData("singleton patter example")
+    dataBase.insertData("singleton pattern example")
 
     for (data in dataBase.data) {
         println(data)
     }
-
 }

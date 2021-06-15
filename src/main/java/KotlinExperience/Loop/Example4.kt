@@ -1,7 +1,5 @@
 package KotlinExperience.Loop
 
-import kotlin.math.withSign
-
 class Example4 {
 }
 
