@@ -4,26 +4,56 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.lang.annotation.ElementType;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 class Demo {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        PersonalProfileDataList profileDataList = new PersonalProfileDataList();
-        List<PersonalProfileDataList> ob = PersonalProfileDataList.result("1815 NEAL TERRACE");
 
-        System.out.println(ob);
+        List<PersonalProfileDataList> list = new ArrayList<>(PersonalProfileDataList.result("227 119 ALIIOLANI ST"));
+
+        //System.out.println(list.get(0).getMailingAddressLine1());
+
+
+        //System.out.println(list.stream().findAny().get().getPrimaryAddressLine1());
+
+
+        Random r = new Random();
+        PersonalProfileDataList e = list.stream().skip(r.nextInt(list.size())).findFirst().get();
+
+        //System.out.println(e.getPrimaryAddressLine1());
+        //System.out.println(e.getPrimaryAddressCity());
+
+
+
+        List<String> strings = Arrays.asList("227 119 ALIIOLANI ST", "1815 NEAL TERRACE", "1017 5TH ST5");
+        Map<String, PersonalProfileDataList> listMap = new HashMap<>();
+
+        listMap.put("227 119 ALIIOLANI ST", PersonalProfileDataList.getAddressList().get(1));
+        System.out.println(listMap.get("227 119 ALIIOLANI ST"));
+
+
+
+
+
+
+        String randomString = strings
+                .stream()
+                .sorted((o1, o2) -> ThreadLocalRandom.current().nextInt(-1, 2))
+                .findAny()
+                .get();
+
+        System.out.println(randomString);
     }
+
 }
 
-@ToString
-@Setter
 @Getter
+@Setter
+@ToString
 public class PersonalProfileDataList {
 
     // this is helper class, to create personal profile data, and return in randomly, for further filling in PersonalProfileEditTest
@@ -43,8 +73,7 @@ public class PersonalProfileDataList {
     private String extensionNumber;
     private String email;
 
-
-/**
+    /**
      *
      * @param valueFromPrimaryAddressLine1 which received string value from MFM Primary address line 1
      * @return array, which was randomly selected from array list in getAddressList method
@@ -96,7 +125,7 @@ public class PersonalProfileDataList {
         list1.setHomePhoneNumber("555-666-7789");
         list1.setWorkPhoneNumber("555-666-7780");
         list1.setExtensionNumber("666677");
-        list1.setEmail("SRUDOV@ACCESSSOFTEK.COM");
+        list1.setEmail("test@mail.com");
 
         // Preset of user address number 2
         list2.setPrimaryAddressLine1("227 119 ALIIOLANI ST");
@@ -113,7 +142,7 @@ public class PersonalProfileDataList {
         list2.setHomePhoneNumber("544-565-6678");
         list2.setWorkPhoneNumber("522-396-4568");
         list2.setExtensionNumber("234477");
-        list2.setEmail("PCHERNIKOV@ACCESSSOFTEK.COM");
+        list2.setEmail("test@mail.com");
 
         // Preset of user address number 3
         list3.setPrimaryAddressLine1("1017 5TH ST5");
@@ -130,8 +159,7 @@ public class PersonalProfileDataList {
         list3.setHomePhoneNumber("599-222-9999");
         list3.setWorkPhoneNumber("573-986-7788");
         list3.setExtensionNumber("567777");
-        list3.setEmail("OKIRGANOV@ACCESSSOFTEK.COM");
-
+        list3.setEmail("test@mail.com");
 
         return addresses;
     }

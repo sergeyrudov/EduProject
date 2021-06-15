@@ -3,12 +3,12 @@ package automation.api;
 import automation.models.Employee;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.Bean;
 
 import java.util.*;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
-
 
 public class ApiLogin {
 
@@ -49,6 +49,4 @@ public class ApiLogin {
                 .then()
                 .statusCode(200);
     }
-
-
 }
