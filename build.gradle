@@ -12,6 +12,11 @@ plugins {
     id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.4.30-RC'
     id "io.qameta.allure" version "2.8.1"
+
+    id("io.gitlab.arturbosch.detekt") version "1.15.0"
+    id("jacoco")
+    id("pl.allegro.tech.build.axion-release") version "1.11.0"
+
 }
 
 group 'cloud.autotests'
@@ -55,7 +60,7 @@ dependencies {
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
     compile 'org.jdom:jdom2:2.0.6'
     compile group: 'io.appium', name: 'java-client', version: '7.4.1'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
@@ -71,6 +76,12 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-configuration2', version: '2.7'
     //compile 'org.slf4j:slf4j-api:1.7.5'
     //compile 'org.slf4j:slf4j-simple:1.7.5'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.20.2'
+    testCompile("org.assertj:assertj-core:3.11.1")
+
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+
+
 
 
 
@@ -154,6 +165,7 @@ task tests(type: Test) {
     useJUnitPlatform {
         includeTags 'ui'
         includeTags 'api'
+        includeTags 'param'
     }
     systemProperty 'platform', 'web'
 }
@@ -162,4 +174,14 @@ task one_test(type: Test) {
     useJUnitPlatform {
         includeTags 'one'
     }
+}
+tasks.withType(Test as Class<Task>) {
+    scanForTestClasses = true
+    include "KotlinExperience.InitData" // whatever Ant pattern matches your test class files
+}
+task testsForDemo(type: Test) {
+    useJUnitPlatform {
+        includeTags 'param'
+    }
+    systemProperty 'platform', 'web'
 }

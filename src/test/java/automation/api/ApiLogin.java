@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
 
+import java.net.http.HttpRequest;
 import java.util.*;
 
 import static io.restassured.RestAssured.get;
@@ -19,13 +20,13 @@ public class ApiLogin {
         List<Employee> list = new ArrayList<>(Arrays.asList(accountsDataList));
 
 
-        for (int i = 0; i < list.size(); i++) {
+        for (Employee employee : list) {
             System.out.println("---------------------------");
-            System.out.println(list.get(i).getId());
-            System.out.println(list.get(i).getName());
-            System.out.println(list.get(i).getSurname());
-            System.out.println(list.get(i).getDepartment());
-            System.out.println(list.get(i).getSalary());
+            System.out.println(employee.getId());
+            System.out.println(employee.getName());
+            System.out.println(employee.getSurname());
+            System.out.println(employee.getDepartment());
+            System.out.println(employee.getSalary());
             System.out.println("---------------------------");
 
         }
