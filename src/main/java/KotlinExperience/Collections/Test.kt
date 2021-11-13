@@ -1,9 +1,6 @@
 package KotlinExperience.Collections
 
-import com.google.common.base.Throwables
-import net.bytebuddy.implementation.bytecode.Throw
 import java.lang.Exception
-import kotlin.jvm.Throws
 
 class Test {
 }

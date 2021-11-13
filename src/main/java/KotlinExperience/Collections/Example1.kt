@@ -1,5 +1,7 @@
 package KotlinExperience.Collections
 
+import java.util.*
+
 class Example1 {
 }
 
@@ -11,4 +13,8 @@ fun main() {
     println(array[2])
     array[0] = - 100
     println(array[0])
+
+    val tt = mutableListOf<UUID>(UUID.randomUUID(), UUID.randomUUID())
+
+    tt.forEach { println(it) }
 }
