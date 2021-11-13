@@ -64,6 +64,9 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-configuration2', version: '2.7'
     //compile 'org.slf4j:slf4j-api:1.7.5'
     //compile 'org.slf4j:slf4j-simple:1.7.5'
+    testImplementation 'org.assertj:assertj-core:3.6.1'
+    testImplementation 'org.assertj:assertj-swing-junit:3.17.0'
+
 
 
 
