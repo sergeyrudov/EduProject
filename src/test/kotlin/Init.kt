@@ -28,7 +28,6 @@ class InitData {
     @ParameterizedTest(name = "And info for jenkins.etc")
     @MethodSource("prepareData")
     @Tag("param")
-    @Test
     fun `validate data`(data: userDto) {
         SoftAssertions.assertSoftly {
             it.assertThat(data.appium).isEqualTo(userDto::appium)

@@ -1,7 +1,8 @@
 public class GG {
     public static void main(String[] args) {
-        verify("heloo");
-        phone("1234567890");
+        //verify("heloo");
+       // phone("1234567890");
+        checkPalindrome("Hwllo world str");
     }
 
     static boolean verify(String value) {
@@ -25,6 +26,11 @@ public class GG {
             System.out.println("false");
             return false;
         }
+    }
+
+    static void checkPalindrome(String value) {
+        for (int i=0; i<=value.length();i--) {
+            System.out.println(value.charAt(i));        }
 
     }
 

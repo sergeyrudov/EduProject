@@ -80,6 +80,8 @@ dependencies {
     testCompile("org.assertj:assertj-core:3.11.1")
 
     testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+    implementation group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
+
 
 
 
@@ -122,11 +124,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-task api(type: Test) {
-    useJUnitPlatform {
-        includeTags 'api'
-    }
-}
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
@@ -161,27 +158,18 @@ tasks.withType(Test) {
     }
 }
 
-task tests(type: Test) {
-    useJUnitPlatform {
-        includeTags 'ui'
-        includeTags 'api'
-        includeTags 'param'
-    }
-    systemProperty 'platform', 'web'
+test {
+    // Discover and execute JUnit4-based tests
+    useJUnit()
+
+    // Discover and execute TestNG-based tests
+    useTestNG()
+
+    // Discover and execute JUnit Platform-based tests
+    useJUnitPlatform()
 }
 
-task one_test(type: Test) {
-    useJUnitPlatform {
-        includeTags 'one'
-    }
-}
 tasks.withType(Test as Class<Task>) {
     scanForTestClasses = true
     include "KotlinExperience.InitData" // whatever Ant pattern matches your test class files
-}
-task testsForDemo(type: Test) {
-    useJUnitPlatform {
-        includeTags 'param'
-    }
-    systemProperty 'platform', 'web'
 }
