@@ -1,5 +1,8 @@
 package Multithreading;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 public class MonitorExample2 {
     static final Object lock = new Object();
 
@@ -7,6 +10,7 @@ public class MonitorExample2 {
         Thread t1 = new Thread(new RunnableImplMobile());
         Thread t2 = new Thread(new RunnableImplSkype());
         Thread t3 = new Thread(new RunnableImplWhatsapp());
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(1);
 
         t1.start();
         t2.start();

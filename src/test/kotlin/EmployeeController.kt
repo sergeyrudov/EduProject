@@ -3,12 +3,8 @@ package automation.api
 import automation.api.task.AbstractController
 import automation.api.task.Employee
 import automation.api.task.KrolevarkaAPI
-import com.google.gson.JsonObject
 import io.qameta.allure.Step
-import io.restassured.RestAssured.post
-import io.restassured.RestAssured.requestSpecification
 import org.springframework.http.HttpStatus
-import java.util.*
 
 object EmployeeController : AbstractController(requestSpecification = KrolevarkaAPI.requestSpecification) {
 

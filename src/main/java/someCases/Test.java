@@ -9,6 +9,7 @@ import lombok.ToString;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @AllArgsConstructor
 @ToString
@@ -47,7 +48,11 @@ public class Test {
                 new Person("Bob Martin", 46, Occupation.DEVELOPER),
                 new Person("Fred Brooks", 47, Occupation.DEVELOPER),
                 new Person("Maks", 21, Occupation.CEO)
+
         );
+
+
+        Object t1 = team.stream().filter(i -> i.getAge()>30).count();
 
         System.out.println("Quantity of CEO is: " + team.stream().filter(i -> i.occupation.equals(Occupation.CEO)).count());
 
@@ -73,7 +78,8 @@ public class Test {
 
         List<String> strings = studentList.stream()
                 .filter(Objects::nonNull)
-                .map(Student::getName).collect(Collectors.toList());
+                .map(Student::getName)
+                .collect(Collectors.toList());
 
         System.out.println("filter nullable values: " + strings);
 
@@ -86,7 +92,25 @@ public class Test {
 
         System.out.println(strings.stream()
         .filter(Predicate.not(String::isBlank)));
+
+
+
+        String[] l1 = {"White", "Black", "Red"};
+        String[] l2 = {"Red", "Green"};
+
+        System.out.println(l1);
+
+        int[] a1 = {1, 2, 3, 4};
+        int[] a2 = {2, 4, 6, 8};
+        IntStream.range(0,a1.length)
+                .filter(i -> IntStream.range(0,a2.length).filter(j -> (a1[i] == a2[j])).count() == 0)
+                .forEach(i -> System.out.println("a1["+i+"]="+a1[i]));
+
+
     }
+
+
+
 
 
     static int reversInt(int num) {
@@ -133,8 +157,8 @@ public class Test {
         //Отсортировать список словарей по ключу 'x'
         //    l = [{"x": 4}, {"x": 2}, {"x": 1}, {"x": 3}]
 
-        public class HelloWorld{​​​​​
-            public static void main(String []args){​​​​​
+        public class HelloWorld{
+            public static void main(String []args){
                 List<Person> personList = new ArrayList<>();
                 personList.add(new Person("Peter", "Patterson", 21));
                 personList.add(new Person("Paul", "Walker", 31));
@@ -145,7 +169,7 @@ public class Test {
                 personList.add(null);
 // **** //
                 personList.add(new Person("Aaron", "Bortnicker", 18));
-            }​​​​​
-        }​​​​​
+            }
+        }
 //Вывести все уникальные имена из листа, результат должен быть в апперкейсе. пример: ["PETER","PAUL","STEVE"]
 }*/

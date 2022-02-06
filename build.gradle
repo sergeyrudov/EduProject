@@ -97,6 +97,9 @@ dependencies {
     compile("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     compile("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     testCompile 'com.codeborne:pdf-test:1.6.1'
+    implementation group: 'io.github.classgraph', name: 'classgraph', version: '4.8.83'
+
+
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.1'
 
 
