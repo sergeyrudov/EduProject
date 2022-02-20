@@ -9,6 +9,7 @@ public class ObjectAndGenericDiff {
 
         System.out.println(a1.getId());
         System.out.println(a2.getId());
+
     }
 }
 
