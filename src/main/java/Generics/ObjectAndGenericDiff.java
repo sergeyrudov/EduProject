@@ -11,6 +11,7 @@ public class ObjectAndGenericDiff {
         System.out.println(a2.getId());
 
 
+
     }
 }
 
