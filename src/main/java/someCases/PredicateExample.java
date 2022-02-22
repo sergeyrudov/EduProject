@@ -46,10 +46,12 @@ public class PredicateExample {
         //        .forEach(System.out::println);
 
 
+
         List<User> usersWithoutLicense = list.stream()
                 .filter(Objects::nonNull)
                 .filter(userWithoutLicense)
                 .collect(Collectors.toList());
+
 
 
         List<User> sortByAge = usersWithoutLicense.stream()
