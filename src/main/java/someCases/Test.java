@@ -52,6 +52,7 @@ public class Test {
         );
 
 
+
         Object t1 = team.stream().filter(i -> i.getAge()>30).count();
 
         System.out.println("Quantity of CEO is: " + team.stream().filter(i -> i.occupation.equals(Occupation.CEO)).count());
