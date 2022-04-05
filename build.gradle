@@ -57,6 +57,9 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     implementation 'org.projectlombok:lombok:1.18.16'
     testImplementation "io.rest-assured:rest-assured:4.1.2"
+    testImplementation 'org.mockito:mockito-core:4.3.1'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"

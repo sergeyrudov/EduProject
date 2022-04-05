@@ -105,8 +105,6 @@ public class Test {
         IntStream.range(0,a1.length)
                 .filter(i -> IntStream.range(0,a2.length).filter(j -> (a1[i] == a2[j])).count() == 0)
                 .forEach(i -> System.out.println("a1["+i+"]="+a1[i]));
-
-
     }
 
 

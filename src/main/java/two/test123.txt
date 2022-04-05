@@ -1,0 +1,15 @@
+// app
+
+orders get all
+order one
+create order
+
+
+/api/orders -> GET
+kry?=value
+json
+
+/api/orders/{id}
+
+
+/api/orders -> POST

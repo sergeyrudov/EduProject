@@ -1,5 +1,16 @@
 version: '3.6'
 services:
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      HOST: 127.0.0.1
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
   postgres:
     image: postgres
     restart: always
