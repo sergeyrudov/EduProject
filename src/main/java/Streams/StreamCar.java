@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class StreamCar {
@@ -73,8 +74,19 @@ public class StreamCar {
                 .boxed()
                 .collect(Collectors.toList());
 
+        increasePowerForCars(list);
+        System.out.println(list);
+
+
     }
 
+    public static void increasePowerForCars(List<Auto> list) {
+        list.stream()
+                .filter(Auto::isAwd)
+                .collect(Collectors.toList())
+                .forEach(v -> v.power = v.getPower() + 200)
+        ;
+    }
 }
 
 
