@@ -28,7 +28,9 @@ public class StreamFLATMAP {
         facultyList.add(f1);
         facultyList.add(f2);
 
-        facultyList.stream().flatMap(faculty -> faculty.getStudentsOnFaculty().stream())
+        facultyList.stream()
+                .flatMap(faculty -> faculty.getStudentsOnFaculty()
+                        .stream())
                 .forEach(student -> System.out.println(student.getName()));
 
     }
