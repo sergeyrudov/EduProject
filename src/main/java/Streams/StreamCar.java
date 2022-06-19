@@ -1,10 +1,11 @@
 package Streams;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class StreamCar {
@@ -23,6 +24,68 @@ public class StreamCar {
         Function<Auto, String> namesAll = Auto::getName;
         Function<Auto, Integer> allPower = Auto::getPower;
         Consumer<Auto> makePower400 = v -> v.setPower(400);
+        Function<Auto, Map<String, Integer>> getReflection = i -> Map.of(Auto.getAuto().getPackageName(), i.getPower());
+        Function<Auto, Map<String, Integer>> getNameAndPower = i -> Map.of(i.getName(), i.getPower());
+        Function<Auto, Data> getData = i -> new Data(i.getName(), i.getColor(), i.getPower() + 200);
+        UnaryOperator<Auto> increasePower = i -> {
+            int v = i.getPower();
+            i.setPower(v + 300);
+            return i;
+        };
+
+        BinaryOperator<Auto> merge = (a, b) -> {
+            a.setPower(a.getPower() + b.getPower());
+            return a;
+        };
+
+        Function<Auto, Map<String, Integer>> getCarAsMap = i -> Map.of(i.getName(), i.getPower());
+
+        var res = list.stream()
+                .map(getCarAsMap)
+                .collect(Collectors.toMap(Map::keySet, Map::values));
+
+
+
+        BiFunction<Auto, Integer, String> getNameAndPower2 = (i, p) -> i.getName() + " " + p;
+
+        Function<Auto, String> getNameWithPower = i -> i.getName() + " " + i.getPower();
+
+
+        List<Auto> carWithMaxPower = list.stream()
+                .max(Comparator.comparing(Auto::getPower))
+                .stream().collect(Collectors.toList());
+
+        List<Auto> sortCarsByName = list.stream()
+                .sorted(Comparator.comparing(Auto::getName))
+                .collect(Collectors.toList());
+
+
+        var cars = list.stream()
+                .reduce(merge)
+                .get();
+
+        List<Auto> carsWithIncreasedPower = list.stream()
+                .filter(Auto::isAwd)
+                .map(increasePower)
+                .collect(Collectors.toList());
+
+        var getPowerFromStreamAsBoolean = list.stream().map(Auto::getPower).mapToDouble(Double::valueOf).anyMatch(p -> p > 220);
+
+
+        var powr = list.stream()
+                .filter(Auto::isAwd)
+                .map(i -> new Data(i.getName(), i.getColor(), i.getPower() + 200))
+                .collect(Collectors.groupingBy(Data::getPower));
+
+
+        var getDataFun = list.stream()
+                .map(getData)
+                .collect(Collectors.toUnmodifiableList());
+
+
+        var getNPower = list.stream()
+                .map(getNameAndPower)
+                .collect(Collectors.toList());
 
 
         List<Auto> listWithAWDAndPower220Plus = list.stream()
@@ -76,6 +139,29 @@ public class StreamCar {
 
         increasePowerForCars(list);
         System.out.println(list);
+
+
+        var totalPowerForAWDCar = list.stream()
+                .filter(Auto::isAwd)
+                .mapToInt(Auto::getPower)
+                .reduce((acc, elem) -> acc + elem)
+                .getAsInt();
+
+        var maxPowerForAwdCar = list.stream()
+                .filter(Auto::isAwd)
+                .mapToInt(Auto::getPower)
+                .boxed()
+                .max(Integer::compare);
+
+        List<Integer> arr = new ArrayList<>();
+        arr.add(5);
+        arr.add(-2);
+        arr.add(8);
+        arr.add(102);
+
+        var o = arr.stream()
+                .reduce((acc, elem) -> acc*elem)
+                .get();
 
 
     }
@@ -135,6 +221,10 @@ class Auto {
         this.color = color;
     }
 
+    public static Class<Auto> getAuto() {
+        return Auto.class;
+    }
+
     @Override
     public String toString() {
         return "Auto{" +
@@ -144,4 +234,12 @@ class Auto {
                 ", color='" + color + '\'' +
                 '}';
     }
+}
+@AllArgsConstructor
+@Getter
+class Data {
+    String name;
+    String color;
+    Integer power;
+
 }
