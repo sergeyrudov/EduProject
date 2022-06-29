@@ -1,15 +1,21 @@
 package Streams;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
 
 public class StreamCar {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
         Auto car1 = new Auto("Audi", 220, true, "red");
         Auto car2 = new Auto("BMW", 320, false, "black");
         Auto car3 = new Auto("Subaru", 400, true, "blue");
@@ -71,6 +77,10 @@ public class StreamCar {
 
         var getPowerFromStreamAsBoolean = list.stream().map(Auto::getPower).mapToDouble(Double::valueOf).anyMatch(p -> p > 220);
 
+        var carOpt = list.stream()
+                .filter(Auto::isAwd)
+                .max(Comparator.comparing(Auto::getPower))
+                .get();
 
         var powr = list.stream()
                 .filter(Auto::isAwd)
@@ -86,6 +96,22 @@ public class StreamCar {
         var getNPower = list.stream()
                 .map(getNameAndPower)
                 .collect(Collectors.toList());
+
+        // object to json
+        String json = new ObjectMapper()
+                .writer()
+                .withDefaultPrettyPrinter()
+                .writeValueAsString(list.get(0));
+
+        // convert json to object
+        ObjectMapper mapper = new ObjectMapper();
+        Map map = mapper.readValue(json, Map.class);
+
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+        JsonObject object = (JsonObject) parser.parse(json);
+        Auto emp = gson.fromJson(object, Auto.class);
+
 
 
         List<Auto> listWithAWDAndPower220Plus = list.stream()
@@ -140,6 +166,15 @@ public class StreamCar {
         increasePowerForCars(list);
         System.out.println(list);
 
+        var inct = list.stream()
+                .filter(Auto::isAwd)
+                .max(Comparator.comparing(Auto::getPower))
+                .get();
+
+        var ls4 = list.stream()
+                .sorted(Comparator.comparing(Auto::getPower))
+                .collect(Collectors.toList());
+
 
         var totalPowerForAWDCar = list.stream()
                 .filter(Auto::isAwd)
@@ -176,7 +211,8 @@ public class StreamCar {
 }
 
 
-class Auto {
+
+class Auto implements Serializable {
     String name;
     int power;
     boolean awd;
