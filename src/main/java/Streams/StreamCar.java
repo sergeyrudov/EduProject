@@ -33,6 +33,17 @@ public class StreamCar {
         Function<Auto, Map<String, Integer>> getReflection = i -> Map.of(Auto.getAuto().getPackageName(), i.getPower());
         Function<Auto, Map<String, Integer>> getNameAndPower = i -> Map.of(i.getName(), i.getPower());
         Function<Auto, Data> getData = i -> new Data(i.getName(), i.getColor(), i.getPower() + 200);
+        Function<Auto, String> convertToJson = i -> {
+            try {
+                return new ObjectMapper()
+                        .writer()
+                        .withDefaultPrettyPrinter()
+                        .writeValueAsString(i);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        };
+
         UnaryOperator<Auto> increasePower = i -> {
             int v = i.getPower();
             i.setPower(v + 300);
@@ -49,6 +60,10 @@ public class StreamCar {
         var res = list.stream()
                 .map(getCarAsMap)
                 .collect(Collectors.toMap(Map::keySet, Map::values));
+
+        var autoAsJson = list.stream()
+                .map(convertToJson)
+                .collect(Collectors.toList());
 
 
 
