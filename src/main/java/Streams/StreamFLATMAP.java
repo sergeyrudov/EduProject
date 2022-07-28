@@ -4,10 +4,16 @@ package Streams;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
 public class StreamFLATMAP {
+
+    public static<T extends Number> T plus(T x, T y) {
+        Double sum;
+        sum = x.doubleValue() + y.doubleValue();
+        return (T) sum;
+    }
+
     public static void main(String[] args) {
+        System.out.println(plus(1, 2));
 
         Student st1 = new Student("Ivan", 'm', 22, 3, 8.3);
         Student st2 = new Student("Nikolay", 'm', 28, 2, 6.4);
