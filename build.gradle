@@ -85,6 +85,20 @@ dependencies {
     testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
     implementation group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
 
+    implementation "org.junit.jupiter:junit-jupiter:5.8.1"
+    implementation "org.testcontainers:testcontainers:1.17.3"
+    implementation "org.testcontainers:junit-jupiter:1.17.3"
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    implementation group: 'org.testcontainers', name: 'postgresql', version: '1.17.3'
+    implementation group: 'org.springframework', name: 'spring-test', version: '5.3.22'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.12.RELEASE'
+
+
+
+
+
+
+
 
 
 

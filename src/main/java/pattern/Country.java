@@ -1,6 +1,24 @@
 package pattern;
 
-import patterns.fabricMethod.Builder;
+import groovy.util.logging.Slf4j;
+import lombok.Builder;
+import org.junit.ClassRule;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
+import two.CacheExperience;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Country {
     private String language;
@@ -14,6 +32,7 @@ public class Country {
     public static Builder countryBuilder() {
         return new Builder();
     }
+
 
 
     public static class Builder {
@@ -54,6 +73,12 @@ public class Country {
     }
 }
 
+@Builder
+class Computer {
+    String cpuVendor;
+    int ssdSize;
+}
+
 class DemoBuilder {
     public static void main(String[] args) {
         Country country = Country.countryBuilder()
@@ -66,6 +91,10 @@ class DemoBuilder {
 
         System.out.println(country);
 
-
+        Computer computer = Computer.builder()
+                .cpuVendor("Intel")
+                .ssdSize(512)
+                .build();
     }
 }
+
