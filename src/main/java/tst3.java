@@ -22,6 +22,7 @@ public class tst3 {
         Set<Integer> val = new TreeSet<>();
         val.add(1);
         val.add(2);
+        val.add(2);
         System.out.println(val);
 
     }

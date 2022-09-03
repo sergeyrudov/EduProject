@@ -1,11 +1,14 @@
 package HashSetExample;
 
 import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Set;
 
 public class HashSetExmpl {
     public static void main(String[] args) {
         Set<String> set = new HashSet<>();
+        Map<Integer, Integer> vl = new Hashtable<>();
 
         set.add("OK");
         set.add("privet");
