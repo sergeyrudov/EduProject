@@ -31,6 +31,7 @@ public class LMBD extends Man{
                         new Man("Third", 18));
 
         Predicate<Man> agePredicate = m -> m.getAge() > 22;
+
         Predicate<Man> namePredicate = i -> i.getName().equals("Third");
 
 
@@ -55,6 +56,7 @@ public class LMBD extends Man{
 //        System.out.println(optional.get());
 
         Comparator<Man> comparator = Comparator.comparingInt(Man::getAge);
+
 
         /*men.stream()
                 .sorted(comparator)
