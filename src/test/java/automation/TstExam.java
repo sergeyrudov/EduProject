@@ -62,6 +62,13 @@ public class TstExam {
         assertEquals(1, 2);
     }
 
+    @Test
+    void checkNumbers1() {
+        assertEquals(1, 3);
+        System.out.print("Test");
+        assertEquals(1, 2);
+    }
+
 
     public static class User {
         public String name;
