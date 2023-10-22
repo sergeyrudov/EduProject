@@ -31,6 +31,7 @@ public class TstExam {
         calculateFunc.putIfAbsent("getSurname", User::getSurname);
         calculateFunc.putIfAbsent("getAge", u -> String.valueOf(user1.getAge()));
         calculateFunc.putIfAbsent("getDriverLicense", u -> String.valueOf(user1.isDriverLicense()));
+
         calculateFunc.putIfAbsent("getLanguages", u -> Arrays.toString(user1.getLanguages()));
 
 
