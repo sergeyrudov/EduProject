@@ -24,13 +24,15 @@ public class TstExam {
         User user2 = new User("Petya", "Ivanov", 55, true, new String[]{"French", "Spain"});
         User user3 = new User("Igor", "Fedorod", 33, true, new String[]{"Thai", "Russian"});
         User user4 = new User("Masha", "Kukushkina", 38, true, new String[]{"Hindi", "Chinese"});
+        User user5 = new User("Kolya", "Vasechkin", 24, false, new String[]{"English", "French"});
 
-        List<User> userList = Arrays.asList(user1, user2, user3, user4);
+        List<User> userList = Arrays.asList(user1, user2, user3, user4, user5);
 
         calculateFunc.putIfAbsent("getName", User::getName);
         calculateFunc.putIfAbsent("getSurname", User::getSurname);
         calculateFunc.putIfAbsent("getAge", u -> String.valueOf(user1.getAge()));
         calculateFunc.putIfAbsent("getDriverLicense", u -> String.valueOf(user1.isDriverLicense()));
+
 
         calculateFunc.putIfAbsent("getLanguages", u -> Arrays.toString(user1.getLanguages()));
 
