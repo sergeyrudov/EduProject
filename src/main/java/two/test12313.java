@@ -1,6 +1,7 @@
 package two;
 
 import java.awt.*;
+import java.security.Key;
 import java.util.Arrays;
 
 public class test12313 {
@@ -109,12 +110,13 @@ class  BB extends AB {
 }
 
 
-class T {
+/*class T {
     public void job() {
         System.out.println("T");
     }
-}
+}*/
 
+/*
 class V extends  T {
     List list = new List();
-}
+}*/

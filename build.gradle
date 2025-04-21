@@ -65,6 +65,7 @@ dependencies {
 
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.18.2'
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
     compile 'org.jdom:jdom2:2.0.6'

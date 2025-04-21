@@ -1,5 +1,8 @@
 package Multithreading;
 
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class DataRaceSynchronized {
     public static void main(String[] args) {
         MyRunnable runnable = new MyRunnable();
@@ -13,6 +16,10 @@ public class DataRaceSynchronized {
         t1.start();
         t2.start();
         t3.start();
+        int stream = IntStream.rangeClosed(1, 10)
+                .filter(n -> n % 2 == 0)
+                .map(n -> n * 2)
+                .sum();
 
     }
 }
