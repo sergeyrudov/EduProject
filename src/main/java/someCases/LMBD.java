@@ -34,7 +34,6 @@ public class LMBD extends Man{
         Predicate<Man> namePredicate = i -> i.getName().equals("Third");
 
 
-
         men.stream()
                 .filter(agePredicate)
                 .filter(namePredicate)

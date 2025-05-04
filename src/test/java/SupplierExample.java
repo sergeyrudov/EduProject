@@ -19,7 +19,6 @@ public class SupplierExample {
     public Stream<Arguments> getWorker() {
         Computer computer1 = new Computer("Intel", "GeForce", 1203);
         //Computer computer2 = new Computer("AMD", "Radeon", 2344);
-
          return Stream.of(Arguments.of(computer1));
 
 
